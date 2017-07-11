@@ -8,8 +8,6 @@
 记得之前在创业公司，开发任务重，提测前常常加班到晚上12点，就算bug修完，也要等半个小时看着Xcode不慌不忙的打包完成上传测试平台发邮件才能安心回家。鉴于这种惨痛经历，利用闲暇时间就搞一搞自动打包脚本，整理方法并适配Xcode 8.2之后版本。
 三步配置,杜绝污染,一行命令自动上传。
 
-### 我的技术博客：https://reversescale.github.io 欢迎来踩
-
 ![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/64620117.jpg)
 
 ## Requirements 要求
@@ -135,12 +133,13 @@ touch README
 
 
 使用简单、效率高效、进程安全~~~如果你有更好的建议,希望不吝赐教!
-### 你的star是我持续更新的动力!
-===
 
-## 联系方式:
+
+## License 许可证
+OrderedDictionaryTools 使用 MIT 许可证，详情见 LICENSE 文件。
+
+
+## Contact 联系方式:
 * WeChat : WhatsXie
 * Email : ReverseScale@iCloud.com
-* QQ : 1129998515
-
-
+* Blog : https://reversescale.github.io
