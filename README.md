@@ -10,6 +10,12 @@
 
 ![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/64620117.jpg)
 
+## Advantage 框架的优势
+* 1.市面上文件最少，使用最便捷的自动化打包脚本
+* 2.冗余方法少，结构清晰，注释齐全
+* 3.同时支持多平台上传，如：Dir、Fir、蒲公英、App Store等
+* 4.具备较高自定义性
+
 ## Requirements 要求
 * iOS 7+
 * Xcode 8+
