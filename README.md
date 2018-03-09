@@ -1,9 +1,10 @@
 # AutoBuildScript
+![](https://img.shields.io/badge/platform-iOS-red.svg) ![](https://img.shields.io/badge/language-Objective--C-orange.svg) ![](https://img.shields.io/badge/download-53K-brightgreen.svg
+) ![](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg) 
 
 ![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/87193931.jpg)
 
-![](https://img.shields.io/badge/platform-iOS-red.svg) ![](https://img.shields.io/badge/language-Objective--C-orange.svg) ![](https://img.shields.io/badge/download-53K-brightgreen.svg
-) ![](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg) 
+[EN](#Requirements) | [中文](#中文说明)
 
 I remember before the start-up company, the task of heavy development, before the test often overtime to 12 o'clock in the evening, even if the bug is completed, have to wait for half an hour watching Xcode unhurried package completed the test platform to send mail to ease home . In view of this painful experience, the use of leisure time engaged in the implementation of automatic packaging script, organize methods and adapt to Xcode after 8.2 version.
 Three-step configuration, eliminate pollution, his party orders automatically upload.
