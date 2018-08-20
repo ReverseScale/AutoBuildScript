@@ -118,6 +118,83 @@ OUTPUT = "./Packge/%s" %(CONFIGURATION) #打包导出ipa文件路径（请确保
 ![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/26413854.jpg)
 时 打包好的项目已经躺在你的 Fir 测试平台中了。
 
+### 2018.08.20 更新：Jenkins + Fastlane + GitLab + fir (或者蒲公英)
+
+1.安装 Fastlane
+
+Fastlane 是一套使用Ruby写的自动化工具集，用于iOS和Android的自动化打包、发布等工作，可以节省大量的时间
+
+```
+sudo gem install fastlane --verbose
+```
+
+2.移动脚本至项目目录下
+
+根据注释完善脚本配置信息
+
+脚本说明：
+
+* 支持版本号自增长
+* 支持传入自定的宏，用于在代码里使用此预编译的宏来区分开发环境和发布环境
+* 支持自动上传到 fir 和 testflight
+* 上传成功后弹窗提示
+
+3.上传
+
+上传到 fir 的用法：
+```
+./build.sh -m "xxxx_app_test" -t test
+```
+
+上传到 testflight 的用法：
+
+```
+./build.sh -m "xxxx_app_pro" -t pro
+```
+
+4.Jenkins
+
+Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统，使开发者从繁杂的集成中解脱出来，专注于更为重要的业务逻辑实现上。同时 Jenkins 能实施监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。
+
+4.1 下载 Jenkins：
+
+点击 http://mirrors.jenkins.io/war-stable/latest/jenkins.war 下载最新的Jenkins.war
+
+4.2 运行服务器：
+
+需要先安装 java sdk （http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html）
+
+```
+java -jar jenkins.war
+```
+
+4.3 运行 Jenkins
+
+```
+jenkins
+```
+
+4.4 配置 Jenkins：
+
+浏览器打开 http://localhost:8080/ 输入安全密码，安全密码命令行输出的一个文件里面。
+
+然后自动安装推荐的插件，并新建管理员账号密码。
+
+4.5 安装插件
+
+登录http://localhost:8080/ ，选择系统管理 - 管理插件。
+在可选插件中选择GitLab Plugin，Gitlab Hook Plugin，和 Cocoapod plugin 进行安装。
+
+4.6 构建任务
+
+* 1. 点击新建，输入名称，构建一个自由风格的软件项目。
+* 2. 配置 Git 仓库地址，并添加 git 账号。
+* 3. 配置构建脚本 
+
+![](http://og1yl0w9z.bkt.clouddn.com/18-8-20/69661690.jpg)
+
+
+
 ### 附录 执行脚本过程中遇到的问题和解决方案
 
 1.fir: command not found
@@ -127,16 +204,91 @@ OUTPUT = "./Packge/%s" %(CONFIGURATION) #打包导出ipa文件路径（请确保
 2.README: No such file or directory
 
 那是因为你的脚本目录下没有README的文件，只需要建一个README的文件就行了，打开终端，cd到当前位置，然后执行下面的命令：
+
 ```
 touch README
 ```
+
 3.ERROR – : Token can not be blank
 
 这个原因是因为你没有登录fir导致的，你执行这个脚本之前应该先登录一下fir，详情请看上文写的登录fir.im。
+
 4.ERROR – : Code=14 (没有试用的设备 Domain=IDEDistributionErrorDomain Code=14 "No applicable devices
+
 原因：rvm ruby 配置错误
+
 解决：控制台 rvm system
 
+2018.08.20 更新:
+
+5.查看端口占用
+
+端口占用
+
+使用 lsof 会列举所有占用的端口列表：
+
+```
+lsof
+```
+
+使用less可以用于分页展示，如：
+
+```
+lsof | less
+```
+
+也可以使用 -i 查看某个端口是否被占用，如：
+
+```
+lsof -i:3000
+```
+
+杀死进程
+
+```
+kill PID（进程的PID，如2044）
+```
+
+6.Jenkins 改时区
+
+http://your-jenkins/systemInfo，查看user.timezone变量的值
+
+![](http://og1yl0w9z.bkt.clouddn.com/18-8-20/14173777.jpg)
+
+在jenkins的【系统管理】-【脚本命令行】里运行
+
+```
+System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Shanghai')
+```
+
+7.Jenkins 构建超时
+
+jenkins的”build timeout plugin”插件可以帮我们完成该任务。我使用的是jenkins-2.7.1, 默认就已经安装了该插件，如果默认没有安装可在插件管理中搜索进行安装。
+
+任务超时配置如下图：
+
+![](http://og1yl0w9z.bkt.clouddn.com/18-8-20/819954.jpg)
+
+8.Jenkins 定时构建和Poll SCM的区别
+
+* Build periodically：周期进行项目构建（源码是否发生变化没有关系）
+* Poll SCM：定时检查源码变更，如果有更新就checkout最新code下来，然后执行构建动作
+
+```
+每15分钟构建一次：H/15 * * * *  或 */5 * * * *
+
+每天8点构建一次：0 8 * * *
+
+每天8点~17点，两小时构建一次：0 8-17/2 * * *
+
+周一到周五，8点~17点，两小时构建一次：0 8-17/2 * * 1-5
+
+每月1号、15号各构建一次，除12月：H H 1,15 1-11 *
+
+*/5 * * * * （每5分钟检查一次源码变化）
+
+0 2 * * * （每天2:00 必须build一次源码）
+```
 
 ## ⚖ 协议
 
