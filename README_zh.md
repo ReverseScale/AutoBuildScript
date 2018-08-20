@@ -197,11 +197,11 @@ jenkins
 
 ### 附录 执行脚本过程中遇到的问题和解决方案
 
-1.fir: command not found
+#### 1.fir: command not found
 
 这个是因为没有安装fir-cil，导致找不到相应的命令行，只需要安装一下就行了，详情见上文写的如何安装fir-cil。
 
-2.README: No such file or directory
+#### 2.README: No such file or directory
 
 那是因为你的脚本目录下没有README的文件，只需要建一个README的文件就行了，打开终端，cd到当前位置，然后执行下面的命令：
 
@@ -209,19 +209,19 @@ jenkins
 touch README
 ```
 
-3.ERROR – : Token can not be blank
+#### 3.ERROR – : Token can not be blank
 
 这个原因是因为你没有登录fir导致的，你执行这个脚本之前应该先登录一下fir，详情请看上文写的登录fir.im。
 
-4.ERROR – : Code=14 (没有试用的设备 Domain=IDEDistributionErrorDomain Code=14 "No applicable devices
+#### 4.ERROR – : Code=14 (没有试用的设备 Domain=IDEDistributionErrorDomain Code=14 "No applicable devices
 
 原因：rvm ruby 配置错误
 
 解决：控制台 rvm system
 
-2018.08.20 更新:
+> 2018.08.20 更新:
 
-5.查看端口占用
+#### 5.查看端口占用
 
 端口占用
 
@@ -249,7 +249,7 @@ lsof -i:3000
 kill PID（进程的PID，如2044）
 ```
 
-6.Jenkins 改时区
+#### 6.Jenkins 改时区
 
 http://your-jenkins/systemInfo，查看user.timezone变量的值
 
@@ -261,7 +261,7 @@ http://your-jenkins/systemInfo，查看user.timezone变量的值
 System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Shanghai')
 ```
 
-7.Jenkins 构建超时
+#### 7.Jenkins 构建超时
 
 jenkins的”build timeout plugin”插件可以帮我们完成该任务。我使用的是jenkins-2.7.1, 默认就已经安装了该插件，如果默认没有安装可在插件管理中搜索进行安装。
 
@@ -269,7 +269,7 @@ jenkins的”build timeout plugin”插件可以帮我们完成该任务。我�
 
 ![](http://og1yl0w9z.bkt.clouddn.com/18-8-20/819954.jpg)
 
-8.Jenkins 定时构建和Poll SCM的区别
+#### 8.Jenkins 定时构建和Poll SCM的区别
 
 * Build periodically：周期进行项目构建（源码是否发生变化没有关系）
 * Poll SCM：定时检查源码变更，如果有更新就checkout最新code下来，然后执行构建动作
