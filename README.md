@@ -97,7 +97,7 @@ I, [2016-03-08T12:48:14.175765 #12986]  INFO -- :
 ### The third step is to download and configure shell scripts
 1. The folder into the project directory root directory
 
-2 configuration shell script
+2. configuration shell script
 ```
 # Need to change the place (according to the project specific information changes)
 PROJECT_NAME = "***" # project name
