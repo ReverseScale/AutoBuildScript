@@ -1,6 +1,6 @@
 
-##Packge文件夹主要存储导出的ipa文件
-###1. 安装fir-cli
+## Packge文件夹主要存储导出的ipa文件
+### 1. 安装fir-cli
 - 使用该自动打包脚本如需使用fir.im自动上传需要先安装fir-cli
 	- [具体参考该链接](https://github.com/Caiflower/fir-cli)
 	-  Mac OS X 10.11 以后的版本, 由于10.11引入了 rootless, 无法直接安装 fir-cli, 有以下三种解决办法:
