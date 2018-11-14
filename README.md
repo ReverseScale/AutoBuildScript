@@ -6,8 +6,8 @@
 
 [EN](https://github.com/ReverseScale/AutoBuildScript) | [中文](https://github.com/ReverseScale/AutoBuildScript/blob/master/README_zh.md)
 
-I remember before the start-up company, the task of heavy development, before the test often overtime to 12 o'clock in the evening, even if the bug is completed, have to wait for half an hour watching Xcode unhurried package completed the test platform to send mail to ease home . In view of this painful experience, the use of leisure time engaged in the implementation of automatic packaging script, organize methods and adapt to Xcode after 8.2 version.
-Three-step configuration, eliminate pollution, his party orders automatically upload.
+## 🤪 Story background
+I remember about two years ago, at the startup company, the development task was heavy. I often worked overtime until 12 o'clock in the evening before the test. Even if the bug was finished, I would have to watch Xcode unhurriedly spend more than half an hour to complete the package and upload it. Test platform, sent an email to get home with peace of mind. In view of this painful experience, I used the leisure time to engage in an automatic packaging script. Later, I was equipped with Jenkins, and I lived a life without shame. (Applies to Xcode 8.2 and later)
 
 ![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/64620117.jpg)
 
@@ -16,12 +16,16 @@ Three-step configuration, eliminate pollution, his party orders automatically up
 * 2. Redundancy less, clear structure, complete notes
 * 3. At the same time support multi-platform upload, such as: Dir, Fir, dandelion, App Store and so on
 * 4. Has a high custom
+* 5. [The era of self-scripting] -> [The era of Fastlane]
 
 ## 🤖 Requirements 
-* iOS 7+
 * Xcode 8+
 
-## 🛠 Usage 
+█◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢█
+## 🚂 The era of self-scripting
+
+> [🚂 The era of self-scripting] Just look at it, some preparations provide reference, if the environment is already configured, please read [🚄 Fastlane's era]
+ 
 ### The first step is to install fir-cil
 fir-cli is built using Ruby and does not require compilation as long as the corresponding gem is installed.
 
@@ -118,6 +122,9 @@ When you see it
 ![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/26413854.jpg)
 The packaged items are already on your Fir testbed.
 
+
+█◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢█
+## 🚄 The era of Fastlane
 ### 2018.08.20 Update: Jenkins + Fastlane + GitLab + fir (or dandelion)
 
 1. Install Fastlane
@@ -213,7 +220,8 @@ This is because you are not logged in to fir, and you should log in to fir befor
 Reason: rvm ruby configuration error
 Solution: console rvm system
 
-> 2018.08.20 update:
+█◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢█
+### 2018.08.20 Update: Jenkins related setting method
 
 #### 5. View port occupancy
 
@@ -284,6 +292,72 @@ Built on the 1st and 15th of each month, except December: H H 1,15 1-11 *
 0 2 * * * (The source code must be built once every 2:00)
 ```
 
+█◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢█
+
+### 2018.08.20 Update: agvtool command line management version number
+
+#### Common command line:
+
+Set the version number to `1.1.0`
+```
+Xcrun agvtool new-marketing-version 1.1.0
+```
+
+Set the build number `automatically add 1`
+```
+Xcrun agvtool next-version -all
+```
+
+### Introduction
+
+Agvtool is a command line tool that allows you to automatically increment to the next highest number or specific number.
+
+#### 1. Modify the default settings of Xcode
+
+By default, no version control system is used. Setting up the version system Apple Universal ensures that Xcode will include all agvtool version information generated in your project.
+
+![](https://i.loli.net/2018/11/14/5beb8b3b062aa.png)
+
+Above: Set the version of the current project and the build settings of the version control system
+
+#### 2. Set your version number and bulid version number
+
+Agvtool queries the application's Info.plist to get your version and bulid version number.
+
+So make sure the keys for CFBundleVersion (Bundle version) and CFBundleShortVersionString (Bundle versions string, short) are in your Info.plist.
+
+![](https://i.loli.net/2018/11/14/5beb8b16cf186.png)
+
+Above: info.plist
+
+#### 3. Command line operation update version number
+
+Exit Xcode, then navigate to the directory containing the project and run the following command to apply the agvtool property in the terminal.
+
+Set the version number to `1.1.0`
+```
+Xcrun agvtool new-marketing-version 1.1.0
+```
+
+Set the build number `automatically add 1`
+```
+Xcrun agvtool next-version -all
+```
+
+Set the build number to `31`
+```
+Xcrun agvtool new-version -all 31
+```
+
+View Version Numbers
+```
+Xcrun agvtool what-marketing-version
+```
+
+View Build Numbers
+```
+Xcrun agvtool what-version
+```
 
 ## ⚖ License
 
