@@ -149,7 +149,7 @@ OUTPUT = "./Packge/%s" %(CONFIGURATION) #打包导出ipa文件路径（请确保
 ## 🚄 Fastlane 的时代
 ### 2018.08.20 更新：Jenkins + Fastlane + GitLab + fir (或者蒲公英)
 
-1.安装 Fastlane
+### 1.安装 Fastlane
 
 Fastlane 是一套使用Ruby写的自动化工具集，用于iOS和Android的自动化打包、发布等工作，可以节省大量的时间
 
@@ -157,7 +157,7 @@ Fastlane 是一套使用Ruby写的自动化工具集，用于iOS和Android的自
 sudo gem install fastlane --verbose
 ```
 
-2.移动脚本至项目目录下
+### 2.移动脚本至项目目录下
 
 根据注释完善脚本配置信息
 
@@ -168,28 +168,28 @@ sudo gem install fastlane --verbose
 * 支持自动上传到 fir 和 testflight
 * 上传成功后弹窗提示
 
-3.上传
+### 3.上传
 
-3.1 上传到 fir 的用法：
+#### 3.1 上传到 fir 的用法：
 ```
 ./build.sh -m "xxxx_app_test" -t test
 ```
 
-3.2 上传到 testflight 的用法：
+#### 3.2 上传到 testflight 的用法：
 
 ```
 ./build.sh -m "xxxx_app_pro" -t pro
 ```
 
-4.Jenkins
+### 4.Jenkins
 
 Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统，使开发者从繁杂的集成中解脱出来，专注于更为重要的业务逻辑实现上。同时 Jenkins 能实施监控集成中存在的错误，提供详细的日志文件和提醒功能，还能用图表的形式形象地展示项目构建的趋势和稳定性。
 
-4.1 下载 Jenkins：
+#### 4.1 下载 Jenkins：
 
 点击 http://mirrors.jenkins.io/war-stable/latest/jenkins.war 下载最新的Jenkins.war
 
-4.2 运行服务器：
+#### 4.2 运行服务器：
 
 需要先安装 java sdk （http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html）
 
@@ -197,24 +197,24 @@ Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统
 java -jar jenkins.war
 ```
 
-4.3 运行 Jenkins
+#### 4.3 运行 Jenkins
 
 ```
 jenkins
 ```
 
-4.4 配置 Jenkins：
+#### 4.4 配置 Jenkins：
 
 浏览器打开 http://localhost:8080/ 输入安全密码，安全密码命令行输出的一个文件里面。
 
 然后自动安装推荐的插件，并新建管理员账号密码。
 
-4.5 安装插件
+#### 4.5 安装插件
 
 登录http://localhost:8080/ ，选择系统管理 - 管理插件。
 在可选插件中选择GitLab Plugin，Gitlab Hook Plugin，和 Cocoapod plugin 进行安装。
 
-4.6 构建任务
+#### 4.6 构建任务
 
 * 1. 点击新建，输入名称，构建一个自由风格的软件项目。
 * 2. 配置 Git 仓库地址，并添加 git 账号。
@@ -249,6 +249,7 @@ touch README
 解决：控制台 rvm system
 
 
+█◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢█
 ### 2018.08.20 更新：Jenkins 相关设置方法
 
 #### 5.查看端口占用
@@ -320,9 +321,10 @@ jenkins的”build timeout plugin”插件可以帮我们完成该任务。我�
 0 2 * * * （每天2:00 必须build一次源码）
 ```
 
+█◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢█
 ### 2018.08.20 更新：agvtool 命令行 管理版本号
 
-常用命令行：
+#### 常用命令行：
 
 设置 版本号 为 `1.1.0`
 ```
@@ -334,9 +336,17 @@ xcrun agvtool new-marketing-version 1.1.0
 xcrun agvtool next-version -all
 ```
 
-agvtool是一个命令行工具，允许你自动递增到下一个最高的数量或具体的数字这些数字。
+### 简介
 
-1.
+agvtool 是一个命令行工具，允许你自动递增到下一个最高的数量或具体的数字这些数字。
+
+#### 1.修改Xcode的默认设置
+
+默认情况下，在不使用任何版本控制系统。设置版本系统苹果通用确保 Xcode 将包括在你的项目中生成的所有agvtool版本信息。
+
+![](http://og1yl0w9z.bkt.clouddn.com/18-11-14/79246199.jpg)
+
+上图：设置当前项目的版本和版本控制系统的构建设置
 
 
 
