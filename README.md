@@ -9,8 +9,6 @@
 ## 🤪 Story background
 I remember about two years ago, at the startup company, the development task was heavy. I often worked overtime until 12 o'clock in the evening before the test. Even if the bug was finished, I would have to watch Xcode unhurriedly spend more than half an hour to complete the package and upload it. Test platform, sent an email to get home with peace of mind. In view of this painful experience, I used the leisure time to engage in an automatic packaging script. Later, I was equipped with Jenkins, and I lived a life without shame. (Applies to Xcode 8.2 and later)
 
-![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/64620117.jpg)
-
 ## 🚀 Advantage 
 * 1. The least file on the market, using the most convenient automated packaging script
 * 2. Redundancy less, clear structure, complete notes
@@ -119,7 +117,7 @@ You can drag autobuild.py to the console and execute the script
 Note: Due to the practicality of other function script is not high (in fact, I am too lazy to engage), there is no adapter modulation, interested friends can configure their own trials, including: e-mail, packaged App Store and so on.
 
 When you see it
-![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/26413854.jpg)
+![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/57912059.jpg)
 The packaged items are already on your Fir testbed.
 
 
@@ -198,7 +196,7 @@ Select GitLab Plugin, Gitlab Hook Plugin, and Cocoapod plugin for installation i
 * 2. Configure the Git repository address and add a git account.
 * 3. Configure the build script
 
-![](http://og1yl0w9z.bkt.clouddn.com/18-8-20/69661690.jpg)
+![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/14722271.jpg)
 
 ### Appendix Problems and solutions encountered during script execution
 
@@ -255,7 +253,7 @@ kill PID (process's PID, such as 2044)
 
 Http://your-jenkins/systemInfo, view the value of the user.timezone variable
 
-![](http://og1yl0w9z.bkt.clouddn.com/18-8-20/14173777.jpg)
+![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/85610878.jpg)
 
 Run in Jenkins [System Management] - [Script Command Line]
 
@@ -266,10 +264,6 @@ system.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Shanghai'
 #### 7.Jenkins build timeout
 
 Jenkins' "build timeout plugin" plugin can help us with this task. I am using jenkins-2.7.1. The plugin is installed by default. If it is not installed by default, it can be searched for in the plugin management.
-
-The task timeout configuration is as follows:
-
-![](http://og1yl0w9z.bkt.clouddn.com/18-8-20/819954.jpg)
 
 #### 8.Jenkins The difference between timing build and Poll SCM
 
