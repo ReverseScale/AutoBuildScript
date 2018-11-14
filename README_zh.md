@@ -6,7 +6,7 @@
 [EN](https://github.com/ReverseScale/AutoBuildScript) | [中文](https://github.com/ReverseScale/AutoBuildScript/blob/master/README_zh.md)
 
 ## 🤪 故事背景
-记得大约两年前，当时在创业公司，开发任务重，提测前常常加班到晚上 12 点，就算 bug 修完，也要看着 Xcode 不慌不忙的花半个多小时打包完成，再上传测试平台，发了邮件才能安心回家。鉴于这种惨痛经历，利用闲暇时间就搞一搞自动打包脚本，后期有配上 Jenkins，从此过上了没羞没臊的生活。（适配 Xcode 8.2 之后版本）
+记得大约两年前，当时在创业公司，开发任务重，提测前常常加班到晚上 12 点，就算 bug 修完，也要看着 Xcode 不慌不忙的花半个多小时打包完成，再上传测试平台，发了邮件才能安心回家。鉴于这种惨痛经历，利用闲暇时间就搞一搞自动打包脚本，后期有配上 Jenkins，从此过上了没羞没臊的生活。（已适配 Xcode 8.2 之后版本）
 
 三步配置，杜绝污染，一行命令自动上传。
 
@@ -17,15 +17,17 @@
 * 2.冗余方法少，结构清晰，注释齐全
 * 3.同时支持多平台上传，如：Dir、Fir、蒲公英、App Store等
 * 4.具备较高自定义性
+* 5.[自编脚本的时代] -> [Fastlane 的时代]
 
 ## 🤖 要求
 * Xcode 8+
 
 ## 自编脚本的时代
 
-> [自编脚本的时代]了解一下即可，有些准备工作具备参考价值，如需使用请直接阅读[Fastlane 的时代]
+> [自编脚本的时代] 了解一下即可，有些准备工作提供参考，如环境已经配置好，请直接阅读 [Fastlane 的时代]
 
 ### 第一步 安装fir-cil
+
 fir-cli 使用 Ruby 构建, 无需编译, 只要安装相应 gem 即可.
 
 ```
@@ -35,13 +37,18 @@ $ gem install fir-cli
 
 #### 常见的安装问题
 (1)使用系统自带的 Ruby 安装, 需确保 ruby-dev 已被正确的安装:
+
 ```
 $ xcode-select --install        # OS X 系统
 $ sudo apt-get install ruby-dev # Linux 系统
 ```
+
 (2)现 Permission denied 相关错误:
+
 解决：在命令前加上 sudo
+
 (3)出现 Gem::RemoteFetcher::FetchError 相关错误:
+
 解决：更换 Ruby 的淘宝源(由于国内网络原因, 你懂的), 并升级下系统自带的 gem
 ```
 $ gem sources --remove https://rubygems.org/
@@ -53,7 +60,9 @@ https://ruby.taobao.org
 gem update --system
 gem install fir-cli
 ```
+
 (4)Mac OS X 10.11 以后的版本, 由于10.11引入了 rootless, 无法直接安装 fir-cli, 有以下三种解决办法:
+
 方法一： 使用 Homebrew 及 RVM 安装 Ruby, 再安装 fir-cli(推荐)
 ```
 # Install Homebrew:
@@ -62,10 +71,12 @@ $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/maste
 $ \curl -sSL https://get.rvm.io | bash -s stable --ruby
 $ gem install fir-cli
 ```
+
 方法二： 指定 fir-cli 中 bin 文件的 PATH
 ```
 $ export PATH=/usr/local/bin:$PATH;gem install -n /usr/local/bin fir-cli
 ```
+
 方法三： 重写 Ruby Gem 的 bindir
 ```
 $ echo 'gem: --bindir /usr/local/bin' >> ~/.gemrc
@@ -73,19 +84,22 @@ $ gem install fir-cli
 ```
 
 ### 第二步 登录fir.im
+
 先到 https://fir.im 创建项目，得到 API Token 并复制。
 
 ```
 fir login
 ```
+
 命令用于使用 API token 登录 fir.im, 并使用发布应用等相关命令.
 
 ```
 fir me
 ```
+
 命令用于查看当前登录用户信息.
 
-示例：
+显示信息如下：
 ```
 $ fir login XXX_YOUR_API_TOKEN_XXX
 I, [2016-03-08T12:48:56.499435 #13043]  INFO -- : Login succeed, previous user's email: xxx@fir.im
@@ -98,9 +112,11 @@ I, [2016-03-08T12:48:14.175765 #12986]  INFO -- :
 ```
 
 ### 第三步 下载并配置 shell 脚本
+
 1.把文件夹导入工程目录根目录下
 
 2.配置 shell 脚本
+
 ```
 # 需要改动的地方 (根据项目具体信息改动)
 PROJECT_NAME = "***" 			    	#项目名称
@@ -111,16 +127,22 @@ CONFIGURATION = "Release" 				#打包的环境设置 Release 环境  Debug 环�
 PROFILE = "AdHoc" 						#配置文件分为四种 AdHoc  Dev  AppStore Ent 分别对应四种配置文件
 OUTPUT = "./Packge/%s" %(CONFIGURATION) #打包导出ipa文件路径（请确保 “%s” 之前的文件夹正确并存在）
 ```
+
 根据具体项目填写
 
-3.控制台到项目所在目录下，启动脚本(必要时加管理员权限)。
+3.控制台到项目所在目录下，启动脚本(必要时加管理员权限)
+
 可以将 autobuild.py 拖拽到控制台，执行脚本
 
-注：其他的功能脚本由于实用性不高（其实我懒得搞），暂时没有适配调制，有兴趣的朋友可以自行配置试用，包括：邮件发送、打包App Store等等。
+注：其他的功能脚本由于实用性不高（其实我懒得搞），暂时没有适配，有兴趣的朋友可以自行配置试用，包括：邮件发送、打包 App Store 等等。
 
 当看到
+
 ![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/26413854.jpg)
-时 打包好的项目已经躺在你的 Fir 测试平台中了。
+
+时，打包好的项目已经躺在你的 Fir 测试平台中了。
+
+┈━═┈━═┈━═┈━═┈━═┈━═┈━═┈━═┈━═┈━═┈━═┈━═┈━═┈━═┈━═┈━═
 
 ## Fastlane 的时代
 ### 2018.08.20 更新：Jenkins + Fastlane + GitLab + fir (或者蒲公英)
