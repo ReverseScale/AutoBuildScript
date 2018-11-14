@@ -5,8 +5,10 @@
 
 [EN](https://github.com/ReverseScale/AutoBuildScript) | [中文](https://github.com/ReverseScale/AutoBuildScript/blob/master/README_zh.md)
 
-记得之前在创业公司，开发任务重，提测前常常加班到晚上12点，就算bug修完，也要等半个小时看着Xcode不慌不忙的打包完成上传测试平台发邮件才能安心回家。鉴于这种惨痛经历，利用闲暇时间就搞一搞自动打包脚本，整理方法并适配Xcode 8.2之后版本。
-三步配置,杜绝污染,一行命令自动上传。
+## 🤪 故事背景
+记得大约两年前，当时在创业公司，开发任务重，提测前常常加班到晚上 12 点，就算 bug 修完，也要看着 Xcode 不慌不忙的花半个多小时打包完成，再上传测试平台，发了邮件才能安心回家。鉴于这种惨痛经历，利用闲暇时间就搞一搞自动打包脚本，后期有配上 Jenkins，从此过上了没羞没臊的生活。（适配 Xcode 8.2 之后版本）
+
+三步配置，杜绝污染，一行命令自动上传。
 
 ![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/64620117.jpg)
 
@@ -17,10 +19,12 @@
 * 4.具备较高自定义性
 
 ## 🤖 要求
-* iOS 7+
 * Xcode 8+
 
-## 🛠 使用方法
+## 自编脚本的时代
+
+> [自编脚本的时代]了解一下即可，有些准备工作具备参考价值，如需使用请直接阅读[Fastlane 的时代]
+
 ### 第一步 安装fir-cil
 fir-cli 使用 Ruby 构建, 无需编译, 只要安装相应 gem 即可.
 
@@ -118,6 +122,7 @@ OUTPUT = "./Packge/%s" %(CONFIGURATION) #打包导出ipa文件路径（请确保
 ![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/26413854.jpg)
 时 打包好的项目已经躺在你的 Fir 测试平台中了。
 
+## Fastlane 的时代
 ### 2018.08.20 更新：Jenkins + Fastlane + GitLab + fir (或者蒲公英)
 
 1.安装 Fastlane
