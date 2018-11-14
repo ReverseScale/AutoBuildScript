@@ -348,7 +348,44 @@ agvtool 是一个命令行工具，允许你自动递增到下一个最高的数
 
 上图：设置当前项目的版本和版本控制系统的构建设置
 
+#### 2.设置你的版本号和 bulid 版本号
 
+agvtool 查询应用程序的 Info.plist 得到你的版本和 bulid 版本号。
+
+所以确保 CFBundleVersion (Bundle version) 和 CFBundleShortVersionString (Bundle versions string, short）的 key 在你的 Info.plist 中。
+
+![](http://og1yl0w9z.bkt.clouddn.com/18-11-14/53351130.jpg)
+
+上图：info.plist
+
+#### 3.命令行操作更新版本号
+
+退出Xcode，然后导航到包含项目的目录，运行下列命令在终端应用 agvtool 属性工作。
+
+设置 版本号 为 `1.1.0`
+```
+xcrun agvtool new-marketing-version 1.1.0
+```
+
+设置 build 号 `自动加1`
+```
+xcrun agvtool next-version -all
+```
+
+设置 build 号为 `31`
+```
+xcrun agvtool new-version -all 31
+```
+
+查看 Version Numbers
+```
+xcrun agvtool what-marketing-version
+```
+
+查看 Build Numbers
+```
+xcrun agvtool what-version
+```
 
 ## ⚖ 协议
 
