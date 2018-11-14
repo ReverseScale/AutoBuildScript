@@ -344,7 +344,7 @@ agvtool 是一个命令行工具，允许你自动递增到下一个最高的数
 
 默认情况下，在不使用任何版本控制系统。设置版本系统苹果通用确保 Xcode 将包括在你的项目中生成的所有agvtool版本信息。
 
-![](http://og1yl0w9z.bkt.clouddn.com/18-11-14/79246199.jpg)
+![](https://i.loli.net/2018/11/14/5beb8b3b062aa.png)
 
 上图：设置当前项目的版本和版本控制系统的构建设置
 
@@ -354,7 +354,7 @@ agvtool 查询应用程序的 Info.plist 得到你的版本和 bulid 版本号�
 
 所以确保 CFBundleVersion (Bundle version) 和 CFBundleShortVersionString (Bundle versions string, short）的 key 在你的 Info.plist 中。
 
-![](http://og1yl0w9z.bkt.clouddn.com/18-11-14/53351130.jpg)
+![](https://i.loli.net/2018/11/14/5beb8b16cf186.png)
 
 上图：info.plist
 
