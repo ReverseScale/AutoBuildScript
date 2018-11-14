@@ -140,7 +140,7 @@ OUTPUT = "./Packge/%s" %(CONFIGURATION) #打包导出ipa文件路径（请确保
 
 当看到
 
-![image](http://og1yl0w9z.bkt.clouddn.com/17-6-30/26413854.jpg)
+![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/57912059.jpg)
 
 时，打包好的项目已经躺在你的 Fir 测试平台中了。
 
@@ -220,9 +220,7 @@ jenkins
 * 2. 配置 Git 仓库地址，并添加 git 账号。
 * 3. 配置构建脚本 
 
-![](http://og1yl0w9z.bkt.clouddn.com/18-8-20/69661690.jpg)
-
-
+![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/14722271.jpg)
 
 ### 附录 执行脚本过程中遇到的问题和解决方案
 
@@ -284,7 +282,7 @@ kill PID（进程的PID，如2044）
 
 http://your-jenkins/systemInfo，查看user.timezone变量的值
 
-![](http://og1yl0w9z.bkt.clouddn.com/18-8-20/14173777.jpg)
+![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/85610878.jpg)
 
 在jenkins的【系统管理】-【脚本命令行】里运行
 
@@ -295,10 +293,6 @@ System.setProperty('org.apache.commons.jelly.tags.fmt.timeZone', 'Asia/Shanghai'
 #### 7.Jenkins 构建超时
 
 jenkins的”build timeout plugin”插件可以帮我们完成该任务。我使用的是jenkins-2.7.1, 默认就已经安装了该插件，如果默认没有安装可在插件管理中搜索进行安装。
-
-任务超时配置如下图：
-
-![](http://og1yl0w9z.bkt.clouddn.com/18-8-20/819954.jpg)
 
 #### 8.Jenkins 定时构建和Poll SCM的区别
 
