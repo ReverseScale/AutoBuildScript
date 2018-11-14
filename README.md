@@ -1,5 +1,5 @@
 # AutoBuildScript
-![](https://img.shields.io/badge/platform-iOS-red.svg) ![](https://img.shields.io/badge/language-Objective--C-orange.svg) ![](https://img.shields.io/badge/download-53K-brightgreen.svg
+![](https://img.shields.io/badge/platform-iOS-red.svg) ![](https://img.shields.io/badge/language-Shell-orange.svg) ![](https://img.shields.io/badge/download-53K-brightgreen.svg
 ) ![](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg) 
 
 ![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/88488532.jpg)
