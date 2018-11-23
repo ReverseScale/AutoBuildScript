@@ -336,7 +336,7 @@ agvtool 是一个命令行工具，允许你自动递增到下一个最高的数
 
 默认情况下，在不使用任何版本控制系统。设置版本系统苹果通用确保 Xcode 将包括在你的项目中生成的所有agvtool版本信息。
 
-![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/25883858.jpg)
+![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-23/1076428.jpg)
 
 上图：设置当前项目的版本和版本控制系统的构建设置
 
