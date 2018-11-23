@@ -310,7 +310,7 @@ Agvtool is a command line tool that allows you to automatically increment to the
 
 By default, no version control system is used. Setting up the version system Apple Universal ensures that Xcode will include all agvtool version information generated in your project.
 
-![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/25883858.jpg)
+![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-23/1076428.jpg)
 
 Above: Set the version of the current project and the build settings of the version control system
 
