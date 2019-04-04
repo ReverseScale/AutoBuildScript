@@ -2,7 +2,7 @@
 ![](https://img.shields.io/badge/platform-iOS-red.svg) ![](https://img.shields.io/badge/language-Shell-orange.svg) ![](https://img.shields.io/badge/download-53K-brightgreen.svg
 ) ![](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg) 
 
-![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/88488532.jpg)
+![](https://s2.ax1x.com/2019/04/04/AgjI8P.png)
 
 [EN](https://github.com/ReverseScale/AutoBuildScript) | [中文](https://github.com/ReverseScale/AutoBuildScript/blob/master/README_zh.md)
 
