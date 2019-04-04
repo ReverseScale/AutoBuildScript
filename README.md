@@ -125,15 +125,32 @@ The packaged items are already on your Fir testbed.
 ## 🚄 The era of Fastlane
 ### 2018.08.20 Update: Jenkins + Fastlane + GitLab + fir (or dandelion)
 
-1. Install Fastlane
+### 1. Install Fastlane
 
-Fastlane is a set of automated tools written in Ruby for automated packaging, publishing, etc. for iOS and Android, saving a lot of time
+#### (1)Xcode command line tool
+
+Make sure the Xcode command line tool installs the latest version and install it with the following command:
+```
+Xcode-select --install
+```
+
+#### (2) Fastlane command line installation
+
+Fastlane is a set of automated tools written in Ruby for automated packaging and publishing of iOS and Android, saving a lot of time:
 
 ```
-sudo gem install fastlane --verbose
+Sudo gem install fastlane --verbose
 ```
 
-2. Move the script to the project directory
+#### (3) Fastlane initialization
+
+Under the root of the project, execute the fastlane init command to start initialization:
+
+```
+Fastlane init
+```
+
+### 2. Move the script to the project directory
 
 Improve script configuration information based on comments
 
@@ -144,7 +161,7 @@ Script description:
 * Support automatic upload to fir and testflight
 * Popup prompt after successful upload
 
-3. Upload
+### 3. Upload
 
 Upload to fir usage:
 ```
@@ -157,40 +174,56 @@ Upload to testflight usage:
 ./build.sh -m "xxxx_app_pro" -t pro
 ```
 
-4.Jenkins
+### 4.Jenkins
 
 Jenkins is an open source project that provides an easy-to-use, continuous integration system that frees developers from complex integrations and focuses on more important business logic implementations. At the same time, Jenkins can implement errors in monitoring integration, provide detailed log files and reminders, and graphically display the trend and stability of project construction in the form of charts.
 
-4.1 Download Jenkins:
+#### 4.1 Download Jenkins:
 
-Click http://mirrors.jenkins.io/war-stable/latest/jenkins.war to download the latest Jenkins.war
+It is recommended to use the command line to build the environment.
 
-4.2 Running the server:
-
-You need to install java sdk (http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) first.
-
+(1) installation brew
 ```
-java -jar jenkins.war
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-4.3 Running Jenkins
+(2) Upgrade java
 
 ```
-jenkins
+Brew cask install java
 ```
 
-4.4 Configuring Jenkins:
+(3) Installation jenkins
+
+```
+Brew install jenkins
+```
+
+> Of course you can also download the latest Jenkins.war from the official website at http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+
+#### 4.2 Environment Command:
+(1) Hanging:
+```
+Brew services start jenkins
+```
+
+(2) Temporary:
+```
+Jenkins
+```
+
+#### 4.3 Configuring Jenkins:
 
 The browser opens http://localhost:8080/ and enters a secure password, which is output from a file in the secure password command line.
 
 Then automatically install the recommended plugin and create a new administrator account password.
 
-4.5 Installing the plugin
+#### 4.4 Installing the plugin
 
 Log in to http://localhost:8080/ and select System Management - Manage Plugins.
 Select GitLab Plugin, Gitlab Hook Plugin, and Cocoapod plugin for installation in the optional plugin.
 
-4.6 Build a task
+#### 4.5 Build a task
 
 * 1. Click New, enter a name, and build a free-style software project.
 * 2. Configure the Git repository address and add a git account.
