@@ -149,10 +149,27 @@ OUTPUT = "./Packge/%s" %(CONFIGURATION) #打包导出ipa文件路径（请确保
 
 ### 1.安装 Fastlane
 
-Fastlane 是一套使用Ruby写的自动化工具集，用于iOS和Android的自动化打包、发布等工作，可以节省大量的时间
+#### （1）Xcode 命令行工具
+
+确保Xcode命令行工具安装最新版本，使用如下命令进行安装：
+```
+xcode-select --install
+```
+
+#### （2）Fastlane 命令行安装
+
+Fastlane 是一套使用Ruby写的自动化工具集，用于iOS和Android的自动化打包、发布等工作，可以节省大量的时间：
 
 ```
 sudo gem install fastlane --verbose
+```
+
+#### （3）Fastlane 初始化
+
+在项目的根目录下面，执行fastlane init命令开始初始化：
+
+```
+fastlane init
 ```
 
 ### 2.移动脚本至项目目录下
@@ -185,34 +202,50 @@ Jenkins 是一个开源项目，提供了一种易于使用的持续集成系统
 
 #### 4.1 下载 Jenkins：
 
-点击 http://mirrors.jenkins.io/war-stable/latest/jenkins.war 下载最新的Jenkins.war
+建议使用命令行搭建环境
 
-#### 4.2 运行服务器：
-
-需要先安装 java sdk （http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html）
-
+（1）安装 brew
 ```
-java -jar jenkins.war
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-#### 4.3 运行 Jenkins
+（2）升级 java
 
+```
+brew cask install java
+```
+
+（3）安装 jenkins
+
+```
+brew install jenkins
+```
+
+> 当然也可以点击 http://mirrors.jenkins.io/war-stable/latest/jenkins.war 从官网下载最新的 Jenkins.war
+
+#### 4.2 环境命令：
+（1）挂起：
+```
+brew services start jenkins
+```
+
+（2）临时：
 ```
 jenkins
 ```
 
-#### 4.4 配置 Jenkins：
+#### 4.3 配置 Jenkins：
 
 浏览器打开 http://localhost:8080/ 输入安全密码，安全密码命令行输出的一个文件里面。
 
 然后自动安装推荐的插件，并新建管理员账号密码。
 
-#### 4.5 安装插件
+#### 4.4 安装插件
 
 登录http://localhost:8080/ ，选择系统管理 - 管理插件。
 在可选插件中选择GitLab Plugin，Gitlab Hook Plugin，和 Cocoapod plugin 进行安装。
 
-#### 4.6 构建任务
+#### 4.5 构建任务
 
 * 1. 点击新建，输入名称，构建一个自由风格的软件项目。
 * 2. 配置 Git 仓库地址，并添加 git 账号。
