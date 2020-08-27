@@ -120,7 +120,6 @@ When you see it
 ![](http://ghexoblogimages.oss-cn-beijing.aliyuncs.com/18-11-14/57912059.jpg)
 The packaged items are already on your Fir testbed.
 
-
 █◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢◤◢█
 ## 🚄 The era of Fastlane
 ### 2018.08.20 Update: Jenkins + Fastlane + GitLab + fir (or dandelion)
